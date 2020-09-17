@@ -6,8 +6,8 @@ import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app.routing';
 
 import {AppComponent} from './app.component';
-import {NavbarComponent} from './shared/navbar/navbar.component';
-import {FooterComponent} from './shared/footer/footer.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {FooterComponent} from './components/footer/footer.component';
 
 import {CommonModule} from "@angular/common";
 import {NouisliderModule} from "ng2-nouislider";
