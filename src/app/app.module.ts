@@ -13,8 +13,6 @@ import {CommonModule} from "@angular/common";
 import {NouisliderModule} from "ng2-nouislider";
 import {JwBootstrapSwitchNg2Module} from "jw-bootstrap-switch-ng2";
 import {HomeViewComponent} from './views/home-view/home-view.component';
-import {SignupViewComponent} from './views/signup-view/signup-view.component';
-
 
 @NgModule({
     declarations: [
@@ -22,7 +20,6 @@ import {SignupViewComponent} from './views/signup-view/signup-view.component';
         NavbarComponent,
         FooterComponent,
         HomeViewComponent,
-        SignupViewComponent
     ],
     imports: [
         BrowserModule,
