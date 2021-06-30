@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "centre-auto-f31d0": {
+      "hosting": {
+        "pk2-angular": [
+          "centre-auto-f31d0"
+        ]
+      }
+    }
+  }
+}

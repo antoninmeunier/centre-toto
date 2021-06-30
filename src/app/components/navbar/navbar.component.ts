@@ -1,5 +1,8 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {Subscription} from 'rxjs/Subscription';
+import {AuthService} from '../../services/auth/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-navbar',
@@ -9,14 +12,21 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
+    tokenSub: Subscription;
+    isAnounymous: boolean = true;
 
-    constructor(private element: ElementRef) {
+    constructor(private element: ElementRef, private authService: AuthService,
+                private router: Router) {
         this.sidebarVisible = false;
     }
 
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+        this.tokenSub = this.authService.getToken().suscribe(token =>
+            this.isAnounymous = !token;
+    )
+        ;
     }
 
     sidebarOpen() {
@@ -47,7 +57,12 @@ export class NavbarComponent implements OnInit {
         }
     };
 
-    isAnonymous() {
-        return true;
+    onCLickLogout() {
+        this.authService.logout().then(() => this.router.navigate(['']));
     }
+
+    ngOnDestroy() {
+        this.tokenSub.unsubscribe();
+    }
+
 }
